@@ -45,7 +45,11 @@ class Role implements RoleInterface
     public function removePermission(PermissionInterface $permission)
     {
         if ($this->hasPermission($permission)) {
-            $this->permissions = array_diff($this->permissions, [$permission]);
+            $this->permissions = array_udiff($this->permissions, [$permission],
+                function ($obj_a, $obj_b) {
+                    return $obj_a->id - $obj_b->id;
+                }
+            );
         }
     }
 

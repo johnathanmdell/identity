@@ -2,7 +2,7 @@
 
 class Permission implements PermissionInterface
 {
-    protected $id;
+    public $id;
 
     protected $name;
 
