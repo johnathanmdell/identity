@@ -1,0 +1,22 @@
+{
+    "name": "johnathanmdell/identity",
+    "description": "RBAC User Management",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Johnathan Dell",
+            "email": "johnathanmdell@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "JohnathanMDell\\Identity\\": "src"
+        }
+    }
+}

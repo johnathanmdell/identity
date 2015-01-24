@@ -1,0 +1,6 @@
+suites:
+    main:
+        namespace: JohnathanMDell\Identity
+        psr4_prefix: JohnathanMDell\Identity
+        src_path: src
+        spec_prefix: spec
