@@ -4,17 +4,24 @@ use JohnathanMDell\Identity\Permission\PermissionInterface;
 
 class Role implements RoleInterface
 {
+    /**
+     * @var int $id
+     */
     protected $id;
 
+    /**
+     * @var string $name
+     */
     protected $name;
 
+    /**
+     * @var array $permissions
+     */
     protected $permissions = [];
 
     public function __construct($id)
     {
         $this->id = $id;
-
-        return $this;
     }
 
     /**

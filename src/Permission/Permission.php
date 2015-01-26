@@ -2,17 +2,24 @@
 
 class Permission implements PermissionInterface
 {
+    /**
+     * @var int $id
+     */
     public $id;
 
+    /**
+     * @var string $name
+     */
     protected $name;
 
+    /**
+     * @var boolean $granted
+     */
     protected $granted;
 
     public function __construct($id)
     {
         $this->id = $id;
-
-        return $this;
     }
 
     /**
