@@ -1,6 +1,7 @@
 <?php namespace spec\JohnathanMDell\Identity\Role;
 
 use JohnathanMDell\Identity\Permission\Permission;
+use JohnathanMDell\Identity\Role\Role;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -28,13 +29,19 @@ class RoleSpec extends ObjectBehavior
 
     function its_name_should_be_mutable()
     {
-        $this->setName('User');
-        $this->getName()->shouldReturn('User');
+        $this->setName('Default');
+        $this->getName()->shouldReturn('Default');
     }
 
     function it_has_no_permissions_by_default()
     {
         $this->getPermissions()->shouldReturn([]);
+    }
+
+    function it_should_return_false_if_permission_is_not_found()
+    {
+        $permission = new Permission(1);
+        $this->hasPermission($permission)->shouldReturn(false);
     }
 
     function it_should_be_able_to_add_to_permissions()
@@ -68,5 +75,16 @@ class RoleSpec extends ObjectBehavior
 
         $this->addPermission($permission, false);
         $this->isGranted($permission)->shouldReturn(false);
+    }
+
+    function it_should_be_able_to_inherit_permissions_from_other_roles()
+    {
+        $permission = new Permission(1);
+
+        $role = new Role(2);
+        $role->addPermission($permission, true);
+
+        $this->inheritPermissions($role);
+        $this->hasPermission($permission)->shouldReturn(true);
     }
 }

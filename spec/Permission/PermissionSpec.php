@@ -30,4 +30,15 @@ class PermissionSpec extends ObjectBehavior
         $this->setName('index');
         $this->getName()->shouldReturn('index');
     }
+
+    function it_has_is_not_granted_by_default()
+    {
+        $this->getGranted()->shouldReturn(null);
+    }
+
+    function its_granted_status_should_be_mutable()
+    {
+        $this->setGranted(true);
+        $this->getGranted()->shouldReturn(true);
+    }
 }
