@@ -5,11 +5,6 @@ use Prophecy\Argument;
 
 class PermissionSpec extends ObjectBehavior
 {
-    function let()
-    {
-        $this->beConstructedWith(1);
-    }
-
     function it_is_initializable()
     {
         $this->shouldHaveType('JohnathanMDell\Identity\Permission\Permission');
@@ -20,15 +15,15 @@ class PermissionSpec extends ObjectBehavior
         $this->shouldImplement('JohnathanMDell\Identity\Permission\PermissionInterface');
     }
 
-    function it_has_no_name_by_default()
+    function it_has_no_hash_by_default()
     {
-        $this->getName()->shouldReturn(null);
+        $this->getHash()->shouldReturn(null);
     }
 
-    function its_name_should_be_mutable()
+    function its_hash_should_be_mutable()
     {
-        $this->setName('index');
-        $this->getName()->shouldReturn('index');
+        $this->setHash('da39a3ee5e6b4b0d3255bfef95601890afd80709');
+        $this->getHash()->shouldReturn('da39a3ee5e6b4b0d3255bfef95601890afd80709');
     }
 
     function it_has_is_not_granted_by_default()

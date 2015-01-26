@@ -3,39 +3,29 @@
 class Permission implements PermissionInterface
 {
     /**
-     * @var int $id
+     * @var string $hash
      */
-    public $id;
-
-    /**
-     * @var string $name
-     */
-    protected $name;
+    protected $hash;
 
     /**
      * @var boolean $granted
      */
     protected $granted;
 
-    public function __construct($id)
+    /**
+     * {@inheritdoc}
+     */
+    public function getHash()
     {
-        $this->id = $id;
+        return $this->hash;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function setHash($hash)
     {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
+        $this->hash = $hash;
 
         return $this;
     }

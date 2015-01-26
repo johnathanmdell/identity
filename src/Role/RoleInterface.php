@@ -5,17 +5,6 @@ use JohnathanMDell\Identity\Permission\PermissionInterface;
 interface RoleInterface
 {
     /**
-     * @return string
-     */
-    public function getName();
-
-    /**
-     * @param string $name
-     * @return Role
-     */
-    public function setName($name);
-
-    /**
      * @param PermissionInterface $permission
      * @param boolean $granted
      * @return Role

@@ -5,13 +5,13 @@ interface PermissionInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getHash();
 
     /**
-     * @param string $name
+     * @param string $hash
      * @return Permission
      */
-    public function setName($name);
+    public function setHash($hash);
 
     /**
      * @return boolean

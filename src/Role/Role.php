@@ -5,42 +5,9 @@ use JohnathanMDell\Identity\Permission\PermissionInterface;
 class Role implements RoleInterface
 {
     /**
-     * @var int $id
-     */
-    protected $id;
-
-    /**
-     * @var string $name
-     */
-    protected $name;
-
-    /**
      * @var array $permissions
      */
     protected $permissions = [];
-
-    public function __construct($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 
     /**
      * {@inheritdoc}
@@ -71,7 +38,7 @@ class Role implements RoleInterface
             $this->permissions = array_udiff($this->permissions, [$permission],
                 function ($objectA, $objectB)
                 {
-                    return $objectA->id - $objectB->id;
+                    return $objectA->getHash() - $objectB->getHash();
                 }
             );
         }
