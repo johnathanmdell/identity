@@ -25,7 +25,7 @@ class Permission implements PermissionInterface
      */
     public function setHash($hash)
     {
-        $this->hash = $hash;
+        $this->hash = sha1($hash);
 
         return $this;
     }

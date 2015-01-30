@@ -26,7 +26,13 @@ class Role implements RoleInterface
      */
     public function hasPermission(PermissionInterface $permission)
     {
-        return in_array($permission, $this->permissions);
+        $result = array_filter($this->permissions,
+            function ($permissionObject) use (&$permission) {
+                return $permissionObject->getHash() == $permission->getHash();
+            }
+        );
+
+        return $result ? array_shift($result) : false;
     }
 
     /**
@@ -36,8 +42,7 @@ class Role implements RoleInterface
     {
         if ($this->hasPermission($permission)) {
             $this->permissions = array_udiff($this->permissions, [$permission],
-                function ($objectA, $objectB)
-                {
+                function ($objectA, $objectB) {
                     return $objectA->getHash() - $objectB->getHash();
                 }
             );
@@ -59,18 +64,10 @@ class Role implements RoleInterface
      */
     public function isGranted(PermissionInterface $permission)
     {
-        if ($this->hasPermission($permission)) {
-            return $this->permissions[array_search($permission, $this->permissions)]->getGranted();
+        if ($result = $this->hasPermission($permission)) {
+            return $result->getGranted();
         }
 
         return false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function inheritPermissions(RoleInterface $role)
-    {
-        $this->permissions = array_merge($this->permissions, $role->getPermissions());
     }
 }

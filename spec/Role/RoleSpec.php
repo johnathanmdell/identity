@@ -33,7 +33,7 @@ class RoleSpec extends ObjectBehavior
         $permission = new Permission();
 
         $this->addPermission($permission, true);
-        $this->hasPermission($permission)->shouldReturn(true);
+        $this->hasPermission($permission)->shouldReturn($permission);
     }
 
     function it_should_be_able_to_remove_from_permissions()
@@ -59,16 +59,5 @@ class RoleSpec extends ObjectBehavior
 
         $this->addPermission($permission, false);
         $this->isGranted($permission)->shouldReturn(false);
-    }
-
-    function it_should_be_able_to_inherit_permissions_from_other_roles()
-    {
-        $permission = new Permission();
-
-        $role = new Role();
-        $role->addPermission($permission, true);
-
-        $this->inheritPermissions($role);
-        $this->hasPermission($permission)->shouldReturn(true);
     }
 }

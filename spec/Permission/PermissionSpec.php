@@ -22,8 +22,8 @@ class PermissionSpec extends ObjectBehavior
 
     function its_hash_should_be_mutable()
     {
-        $this->setHash('da39a3ee5e6b4b0d3255bfef95601890afd80709');
-        $this->getHash()->shouldReturn('da39a3ee5e6b4b0d3255bfef95601890afd80709');
+        $this->setHash('SomeRandomHash');
+        $this->getHash()->shouldReturn('5492f8fbbb8b72d4ac3c5eb5c37f5b65555dd012');
     }
 
     function it_has_is_not_granted_by_default()

@@ -33,9 +33,4 @@ interface RoleInterface
      * @return boolean
      */
     public function isGranted(PermissionInterface $permission);
-
-    /**
-     * @param RoleInterface $role
-     */
-    public function inheritPermissions(RoleInterface $role);
 }
