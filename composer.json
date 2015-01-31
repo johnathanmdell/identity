@@ -1,6 +1,6 @@
 {
     "name": "johnathanmdell/identity",
-    "description": "RBAC User Management",
+    "description": "RBAC Component",
     "license": "MIT",
     "authors": [
         {
