@@ -18,6 +18,7 @@ interface RoleInterface
     public function hasPermission(PermissionInterface $permission);
 
     /**
+     *
      * @param PermissionInterface $permission
      * @return Role
      */
